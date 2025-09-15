@@ -34,10 +34,15 @@ export default function Home() {
                 <MapPin className="h-6 w-6 text-accent mt-1" />
                 <div>
                   <p className="font-bold">Location:</p>
-                  <p className="text-muted-foreground">
+                  <a
+                    href="https://maps.app.goo.gl/EGQ2iX7CZDbWZ7CW8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary hover:underline"
+                  >
                     Bridgeland High School <br />
                     10707 Mason Rd, Cypress, TX 77433
-                  </p>
+                  </a>
                 </div>
               </div>
             </CardContent>
