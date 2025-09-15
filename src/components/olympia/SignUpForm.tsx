@@ -7,6 +7,7 @@ import { Loader2 } from 'lucide-react';
 
 import { registerUserAction } from '@/app/actions';
 import { SignUpSchema, type SignUpData, sports } from '@/lib/types';
+import { sportDetails } from '@/lib/sport-details';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import {
@@ -38,6 +39,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Info } from 'lucide-react';
 
 export function SignUpForm() {
   const { toast } = useToast();
@@ -59,6 +62,7 @@ export function SignUpForm() {
 
   const participationType = form.watch('participationType');
   const age = form.watch('age');
+  const selectedSport = form.watch('sport');
 
   async function onSubmit(data: SignUpData) {
     setIsSubmitting(true);
@@ -236,33 +240,51 @@ export function SignUpForm() {
                 />
               </div>
             </div>
-            <FormField
-              control={form.control}
-              name="sport"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Sport of Interest</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a sport" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {sports.map((sport) => (
-                        <SelectItem key={sport} value={sport}>
-                          {sport}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
+            <div className="md:col-span-2">
+              <FormField
+                control={form.control}
+                name="sport"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Sport of Interest</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a sport" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {sports.map((sport) => (
+                          <SelectItem key={sport} value={sport}>
+                            {sport}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              {selectedSport && sportDetails[selectedSport] && (
+                <Alert className="mt-4">
+                  <Info className="h-4 w-4" />
+                  <AlertTitle className="font-bold">
+                    {selectedSport} Details
+                  </AlertTitle>
+                  <AlertDescription>
+                    <div
+                      className="prose prose-sm text-foreground"
+                      dangerouslySetInnerHTML={{
+                        __html: sportDetails[selectedSport],
+                      }}
+                    />
+                  </AlertDescription>
+                </Alert>
               )}
-            />
+            </div>
             <FormField
               control={form.control}
               name="participationType"

@@ -2,7 +2,7 @@
 
 ## Core Features:
 
-- User Registration Form: A form for users to enter their Name, Email, Gender, Age, WhatsApp Number, Sports Interested in (5k Run, Archery, Basketball, Cricket, Fitness Course, Flag Football, Kids Sports, Pickleball, Table Tennis, Track Running, Volleyball), Participation Type (Team/Individual), and Team Name (if applicable).
+- User Registration Form: A form for users to enter their Name, Email, Gender, Age, WhatsApp Number, Sports Interested in (5k Run, Archery, Basketball, Cricket, Fitness Course, Flag Football, Kids Sports, Martial Arts, Pickleball, Table Tennis, Tennis, Track Running, Volleyball), Participation Type (Team/Individual), and Team Name (if applicable).
 - Data Display: Display the data to the admin user on the second interface
 
 ## Style Guidelines:

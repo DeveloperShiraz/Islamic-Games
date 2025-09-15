@@ -3,13 +3,17 @@ import { z } from 'zod';
 export const sports = [
   '5k Run',
   'Archery',
+  'Badminton',
   'Basketball',
   'Cricket',
   'Fitness Course',
   'Flag Football',
   'Kids Sports',
+  'Martial Arts',
   'Pickleball',
+  'Soccer',
   'Table Tennis',
+  'Tennis',
   'Track Running',
   'Volleyball',
 ] as const;
