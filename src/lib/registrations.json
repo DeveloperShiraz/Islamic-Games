@@ -1,14 +1,14 @@
 [
   {
-    "name": "mo",
-    "email": "ha@me.com",
+    "name": "ha",
+    "email": "shi@raz.com",
     "gender": "Male",
     "age": 22,
     "parentEmail": "",
     "countryCode": "+1",
     "phoneNumber": "1080906050",
     "whatsappNumber": "+11080906050",
-    "sport": "Volleyball",
+    "sport": "Track Running",
     "participationType": "Individual",
     "teamName": ""
   }

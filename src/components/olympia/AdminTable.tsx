@@ -44,26 +44,12 @@ interface AdminTableProps {
   data: SignUpData[];
 }
 
-// Helper to split whatsappNumber into country code and phone number
-const splitWhatsAppNumber = (whatsappNumber?: string) => {
-  if (!whatsappNumber) {
-    return { countryCode: '+1', phoneNumber: '' };
-  }
-  // Simple logic: assumes country code is `+` followed by 1 to 3 digits.
-  const match = whatsappNumber.match(/^(\+\d{1,3})(.*)/);
-  if (match) {
-    return { countryCode: match[1], phoneNumber: match[2].trim() };
-  }
-  // Fallback if no country code is found
-  return { countryCode: '+1', phoneNumber: whatsappNumber };
-};
-
 export function AdminTable({ data }: AdminTableProps) {
   const { toast } = useToast();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editingEmail, setEditingEmail] = useState<string | null>(null);
-  const [editFormData, setEditFormData] = useState<Partial<SignUpData> & { countryCode?: string, phoneNumber?: string} | null>(null);
+  const [editFormData, setEditFormData] = useState<Partial<SignUpData> | null>(null);
 
   if (data.length === 0) {
     return (
@@ -75,12 +61,9 @@ export function AdminTable({ data }: AdminTableProps) {
 
   const handleEditClick = (reg: SignUpData) => {
     setEditingEmail(reg.email);
-    const { countryCode, phoneNumber } = splitWhatsAppNumber(reg.whatsappNumber);
     setEditFormData({
       ...reg,
       age: Number(reg.age),
-      countryCode,
-      phoneNumber,
     });
   };
 
@@ -93,12 +76,7 @@ export function AdminTable({ data }: AdminTableProps) {
     if (!editFormData) return;
     setIsSubmitting(true);
     
-    const submissionData = {
-      ...editFormData,
-      whatsappNumber: `${editFormData.countryCode || ''}${editFormData.phoneNumber || ''}`,
-    };
-
-    const result = await updateRegistrationAction(originalEmail, submissionData as SignUpData);
+    const result = await updateRegistrationAction(originalEmail, editFormData as SignUpData);
     setIsSubmitting(false);
 
     if (result.success) {
