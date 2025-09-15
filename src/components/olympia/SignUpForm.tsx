@@ -85,7 +85,7 @@ export function SignUpForm() {
     <Card className="w-full max-w-2xl shadow-2xl bg-card/80 backdrop-blur-lg">
       <CardHeader>
         <CardTitle className="text-3xl font-headline text-primary">
-          Olympia Sign-Up
+          Islamic Games Houston 2025
         </CardTitle>
         <CardDescription>
           Register for the Muslim Olympics. Fields marked with * are required.
@@ -161,33 +161,39 @@ export function SignUpForm() {
                 <FormItem>
                   <FormLabel>Age *</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="Enter your age" {...field} value={field.value ?? ''} />
+                    <Input
+                      type="number"
+                      placeholder="Enter your age"
+                      {...field}
+                      value={field.value ?? ''}
+                      onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
             {age && age < 18 && (
-                <FormField
-                  control={form.control}
-                  name="parentEmail"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Parent's Email *</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="email"
-                          placeholder="parent@example.com"
-                          {...field}
-                        />
-                      </FormControl>
-                       <FormDescription>
-                        Required for participants under 18.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+              <FormField
+                control={form.control}
+                name="parentEmail"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Parent's Email *</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        placeholder="parent@example.com"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      Required for participants under 18.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             )}
             <FormField
               control={form.control}
@@ -249,7 +255,9 @@ export function SignUpForm() {
                         <FormControl>
                           <RadioGroupItem value="Individual" />
                         </FormControl>
-                        <FormLabel className="font-normal">Individual</FormLabel>
+                        <FormLabel className="font-normal">
+                          Individual
+                        </FormLabel>
                       </FormItem>
                       <FormItem className="flex items-center space-x-2 space-y-0">
                         <FormControl>

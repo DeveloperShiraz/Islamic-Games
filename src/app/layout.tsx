@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
-  title: 'Olympia Sign-Up',
+  title: 'Islamic Games Houston 2025',
   description: 'Sign up for the Muslim Olympics',
 };
 
@@ -18,7 +18,11 @@ export default function RootLayout({
     <html lang="en" className="bg-background">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
           rel="stylesheet"
@@ -31,7 +35,7 @@ export default function RootLayout({
               href="/"
               className="text-2xl font-bold font-headline text-primary"
             >
-              Olympia
+              Islamic Games
             </Link>
             <Button asChild variant="ghost">
               <Link href="/admin">Admin View</Link>
