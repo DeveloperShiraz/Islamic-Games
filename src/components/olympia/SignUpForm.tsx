@@ -161,7 +161,7 @@ export function SignUpForm() {
                 <FormItem>
                   <FormLabel>Age *</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="Enter your age" {...field} />
+                    <Input type="number" placeholder="Enter your age" {...field} value={field.value ?? ''} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

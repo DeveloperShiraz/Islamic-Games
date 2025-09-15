@@ -23,6 +23,7 @@ export const SignUpSchema = z
     }),
     age: z.coerce
       .number({ required_error: 'Age is required.' })
+      .positive()
       .min(5, { message: 'You must be at least 5 years old.' })
       .max(100, { message: 'Please enter a valid age.' }),
     parentEmail: z.string().email().optional().or(z.literal('')),
@@ -37,7 +38,7 @@ export const SignUpSchema = z
   })
   .refine(
     (data) => {
-      if (data.age && data.age < 18) {
+      if (data.age < 18) {
         return !!data.parentEmail && z.string().email().safeParse(data.parentEmail).success;
       }
       return true;
