@@ -40,7 +40,6 @@ export function PasswordProtect({ children }: { children: React.ReactNode }) {
     defaultValues: { password: '' },
   });
 
-  // In a real app, use environment variables for the password.
   const correctPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'password';
 
   function onSubmit(data: PasswordFormData) {
