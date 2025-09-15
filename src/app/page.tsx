@@ -42,17 +42,6 @@ export default function Home() {
               </div>
             </CardContent>
           </Card>
-          <div className="rounded-lg overflow-hidden shadow-lg aspect-video">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.513512295556!2d-95.7339796244465!3d29.9934989749526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640d0e7a2b92e73%3A0x84f7a77a94ab39b!2sBridgeland%20High%20School!5e0!3m2!1sen!2sus!4v1720545934524!5m2!1sen!2sus"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
         </div>
       </div>
     </main>
