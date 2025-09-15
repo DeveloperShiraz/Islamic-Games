@@ -88,7 +88,7 @@ export function SignUpForm() {
           Islamic Games Houston 2025
         </CardTitle>
         <CardDescription>
-          Register for the Muslim Olympics. Fields marked with * are required.
+          Register for the Muslim Olympics. Please fill out the form to register.
         </CardDescription>
       </CardHeader>
       <Form {...form}>
@@ -99,7 +99,7 @@ export function SignUpForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Full Name *</FormLabel>
+                  <FormLabel>Full Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter your name" {...field} />
                   </FormControl>
@@ -112,7 +112,7 @@ export function SignUpForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email *</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
@@ -129,7 +129,7 @@ export function SignUpForm() {
               name="gender"
               render={({ field }) => (
                 <FormItem className="space-y-3">
-                  <FormLabel>Gender *</FormLabel>
+                  <FormLabel>Gender</FormLabel>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
@@ -159,7 +159,7 @@ export function SignUpForm() {
               name="age"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Age *</FormLabel>
+                  <FormLabel>Age</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -179,7 +179,7 @@ export function SignUpForm() {
                 name="parentEmail"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Parent's Email *</FormLabel>
+                    <FormLabel>Parent's Email</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
@@ -200,7 +200,7 @@ export function SignUpForm() {
               name="whatsappNumber"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>WhatsApp Number *</FormLabel>
+                  <FormLabel>WhatsApp Number</FormLabel>
                   <FormControl>
                     <Input
                       type="tel"
@@ -217,7 +217,7 @@ export function SignUpForm() {
               name="sport"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Sport of Interest *</FormLabel>
+                  <FormLabel>Sport of Interest</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
@@ -244,7 +244,7 @@ export function SignUpForm() {
               name="participationType"
               render={({ field }) => (
                 <FormItem className="space-y-3">
-                  <FormLabel>Participation *</FormLabel>
+                  <FormLabel>Participation</FormLabel>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
@@ -277,7 +277,7 @@ export function SignUpForm() {
                 name="teamName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Team Name *</FormLabel>
+                    <FormLabel>Team Name</FormLabel>
                     <FormControl>
                       <Input placeholder="Enter your team's name" {...field} />
                     </FormControl>
