@@ -52,7 +52,7 @@ const splitWhatsAppNumber = (whatsappNumber?: string) => {
   // Simple logic: assumes country code is `+` followed by 1 to 3 digits.
   const match = whatsappNumber.match(/^(\+\d{1,3})(.*)/);
   if (match) {
-    return { countryCode: match[1], phoneNumber: match[2] };
+    return { countryCode: match[1], phoneNumber: match[2].trim() };
   }
   // Fallback if no country code is found
   return { countryCode: '+1', phoneNumber: whatsappNumber };
@@ -63,7 +63,7 @@ export function AdminTable({ data }: AdminTableProps) {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editingEmail, setEditingEmail] = useState<string | null>(null);
-  const [editFormData, setEditFormData] = useState<SignUpData | null>(null);
+  const [editFormData, setEditFormData] = useState<Partial<SignUpData> & { countryCode?: string, phoneNumber?: string} | null>(null);
 
   if (data.length === 0) {
     return (
@@ -92,7 +92,13 @@ export function AdminTable({ data }: AdminTableProps) {
   const handleSaveClick = async (originalEmail: string) => {
     if (!editFormData) return;
     setIsSubmitting(true);
-    const result = await updateRegistrationAction(originalEmail, editFormData);
+    
+    const submissionData = {
+      ...editFormData,
+      whatsappNumber: `${editFormData.countryCode || ''}${editFormData.phoneNumber || ''}`,
+    };
+
+    const result = await updateRegistrationAction(originalEmail, submissionData as SignUpData);
     setIsSubmitting(false);
 
     if (result.success) {
@@ -148,7 +154,7 @@ export function AdminTable({ data }: AdminTableProps) {
     <Input
       type={type}
       name={name}
-      value={(editFormData?.[name] as string | number) ?? ''}
+      value={(editFormData?.[name as keyof typeof editFormData] as string | number) ?? ''}
       onChange={handleInputChange}
       className="h-8"
     />
@@ -160,7 +166,7 @@ export function AdminTable({ data }: AdminTableProps) {
   ) => (
     <Select
       name={name}
-      value={editFormData?.[name] as string}
+      value={editFormData?.[name as keyof typeof editFormData] as string}
       onValueChange={(value) => handleSelectChange(name, value)}
     >
       <SelectTrigger className="h-8">
