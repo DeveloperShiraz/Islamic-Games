@@ -38,6 +38,7 @@ import {
   updateRegistrationAction,
 } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
 
 interface AdminTableProps {
   data: SignUpData[];
@@ -45,6 +46,7 @@ interface AdminTableProps {
 
 export function AdminTable({ data }: AdminTableProps) {
   const { toast } = useToast();
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editingEmail, setEditingEmail] = useState<string | null>(null);
   const [editFormData, setEditFormData] = useState<SignUpData | null>(null);
@@ -76,11 +78,13 @@ export function AdminTable({ data }: AdminTableProps) {
     if (result.success) {
       toast({ title: 'Success', description: 'Registration updated.' });
       handleCancelClick();
+      router.refresh();
     } else {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: result.errors?._form?.[0] || 'Failed to update registration.',
+        description:
+          result.errors?._form?.[0] || 'Failed to update registration.',
       });
     }
   };
@@ -129,7 +133,10 @@ export function AdminTable({ data }: AdminTableProps) {
     />
   );
 
-  const renderSelectCell = (name: keyof SignUpData, options: readonly any[]) => (
+  const renderSelectCell = (
+    name: keyof SignUpData,
+    options: readonly any[]
+  ) => (
     <Select
       name={name}
       value={editFormData?.[name] as string}
@@ -260,7 +267,8 @@ export function AdminTable({ data }: AdminTableProps) {
                             <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                             <AlertDialogDescription>
                               This action cannot be undone. This will
-                              permanently delete the registration for {reg.name}.
+                              permanently delete the registration for {reg.name}
+                              .
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
