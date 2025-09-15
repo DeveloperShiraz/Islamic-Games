@@ -1,13 +1,1 @@
-[
-  {
-    "name": "hello",
-    "email": "shi@raz.com",
-    "gender": "Male",
-    "age": 19,
-    "parentEmail": "",
-    "whatsappNumber": "6506565087",
-    "sport": "Table Tennis",
-    "participationType": "Individual",
-    "teamName": ""
-  }
-]
+[]
