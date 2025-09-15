@@ -41,7 +41,7 @@ export default function RootLayout({
             </Button>
           </nav>
         </header>
-        {children}
+        <main className="relative z-0">{children}</main>
         <Toaster />
       </body>
     </html>
