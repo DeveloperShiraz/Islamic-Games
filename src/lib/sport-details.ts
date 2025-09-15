@@ -7,13 +7,11 @@ export const sportDetails: Record<(typeof sports)[number], string> = {
       <li>5k RUN FOR SUDAN!</li>
       <li>Male & Female all ages</li>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
     </ul>
     `,
   Archery: `
     <ul>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
     </ul>
     `,
   Badminton: `
@@ -24,7 +22,6 @@ export const sportDetails: Record<(typeof sports)[number], string> = {
       <li>Top 8 teams advance to playoffs</li>
       <li>First Aid/Medicine Fees: $5/Person</li>
       <li>Registration: $55/Person</li>
-      <li>Team Registration: $60/Team</li>
     </ul>
     `,
   Basketball: `
@@ -35,8 +32,6 @@ export const sportDetails: Record<(typeof sports)[number], string> = {
     Top 8 advance to Playoffs.
     <ul>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
-      <li>Team Registration: $280/Team</li>
     </ul>
     `,
   Cricket: `
@@ -46,8 +41,6 @@ export const sportDetails: Record<(typeof sports)[number], string> = {
       <li>Each team plays 3 Games</li>
       <li>Top 8 advance to playoffs</li>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
-      <li>Team Registration: $350/Team</li>
     </ul>
     `,
   'Fitness Course': `
@@ -63,7 +56,6 @@ export const sportDetails: Record<(typeof sports)[number], string> = {
       <li>10 15lbs Medicine Ball Throw 10 ft</li>
       <li>10 Burpees</li>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
     </ul>
     `,
   'Flag Football': `
@@ -73,19 +65,16 @@ export const sportDetails: Record<(typeof sports)[number], string> = {
       <li>Each team plays 3 Games</li>
       <li>Top 8 advance to playoffs</li>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
     </ul>
     `,
   'Kids Sports': `
     <ul>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
     </ul>
   `,
   'Martial Arts': `
     <ul>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
     </ul>
   `,
   Pickleball: `
@@ -94,7 +83,6 @@ export const sportDetails: Record<(typeof sports)[number], string> = {
       <li>Each team plays 3 games</li>
       <li>Top 8 teams advance to playoff round</li>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
     </ul>
     `,
   Soccer: `
@@ -104,15 +92,11 @@ export const sportDetails: Record<(typeof sports)[number], string> = {
       <li>Each team plays 3 Games;</li>
       <li>Top 8 teams advance to playoffs</li>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
-      <li>7v7 Team Registration: $280/Team</li>
-      <li>9v9 Team Registration: $350/Team</li>
     </ul>
     `,
   'Table Tennis': `
     <ul>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
     </ul>
   `,
   Tennis: `
@@ -121,8 +105,6 @@ export const sportDetails: Record<(typeof sports)[number], string> = {
       <li>Singles and Doubles</li>
       <li>Play 3 matches then playoff</li>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
-      <li>Doubles Team Registration: $60/Team</li>
     </ul>
     `,
   'Track Running': `
@@ -131,7 +113,6 @@ export const sportDetails: Record<(typeof sports)[number], string> = {
       <li>5k RUN FOR SUDAN!</li>
       <li>Male & Female all ages</li>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
     </ul>
     `,
   Volleyball: `
@@ -141,8 +122,6 @@ export const sportDetails: Record<(typeof sports)[number], string> = {
       <li>Each team plays 3 Games; top 8 advance to playoffs</li>
       <li>Indoor hardwood floor</li>
       <li>First Aid/Medicine Fees: $5/Person</li>
-      <li>Registration: $55/Person valid up to five events</li>
-      <li>Team Registration: $280/Team</li>
     </ul>
     `,
 };
