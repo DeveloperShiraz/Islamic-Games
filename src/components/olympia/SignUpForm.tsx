@@ -48,6 +48,7 @@ export function SignUpForm() {
     defaultValues: {
       name: '',
       email: '',
+      parentEmail: '',
       age: undefined,
       whatsappNumber: '',
       teamName: '',
@@ -56,6 +57,7 @@ export function SignUpForm() {
   });
 
   const participationType = form.watch('participationType');
+  const age = form.watch('age');
 
   async function onSubmit(data: SignUpData) {
     setIsSubmitting(true);
@@ -165,6 +167,28 @@ export function SignUpForm() {
                 </FormItem>
               )}
             />
+            {age && age < 18 && (
+                <FormField
+                  control={form.control}
+                  name="parentEmail"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Parent's Email *</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="parent@example.com"
+                          {...field}
+                        />
+                      </FormControl>
+                       <FormDescription>
+                        Required for participants under 18.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+            )}
             <FormField
               control={form.control}
               name="whatsappNumber"

@@ -25,6 +25,7 @@ export const SignUpSchema = z
       .number({ required_error: 'Age is required.' })
       .min(5, { message: 'You must be at least 5 years old.' })
       .max(100, { message: 'Please enter a valid age.' }),
+    parentEmail: z.string().email().optional(),
     whatsappNumber: z
       .string()
       .min(10, { message: 'Please enter a valid WhatsApp number.' }),
@@ -34,6 +35,18 @@ export const SignUpSchema = z
     }),
     teamName: z.string().optional(),
   })
+  .refine(
+    (data) => {
+      if (data.age < 18) {
+        return !!data.parentEmail && z.string().email().safeParse(data.parentEmail).success;
+      }
+      return true;
+    },
+    {
+      message: "Parent's email is required for participants under 18.",
+      path: ['parentEmail'],
+    }
+  )
   .refine(
     (data) => {
       if (data.participationType === 'Team') {
