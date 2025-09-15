@@ -1,12 +1,23 @@
 [
   {
-    "name": "shiraz",
-    "email": "shi@raz.com",
+    "name": "shirazaa",
+    "email": "shi@raz.coma",
     "gender": "Male",
-    "age": 18,
-    "parentEmail": "",
+    "age": 12,
+    "parentEmail": "sss@ss.com",
     "whatsappNumber": "6506565087",
     "sport": "Table Tennis",
+    "participationType": "Individual",
+    "teamName": ""
+  },
+  {
+    "name": "hashim",
+    "email": "shira.cs@yahoo.com",
+    "gender": "Female",
+    "age": 17,
+    "parentEmail": "sss@ss.com",
+    "whatsappNumber": "0123456789",
+    "sport": "Archery",
     "participationType": "Individual",
     "teamName": ""
   }

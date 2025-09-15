@@ -80,7 +80,7 @@ export function AdminTable({ data }: AdminTableProps) {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: 'Failed to update registration.',
+        description: result.errors?._form?.[0] || 'Failed to update registration.',
       });
     }
   };
