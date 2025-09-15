@@ -76,7 +76,13 @@ export function AdminTable({ data }: AdminTableProps) {
     if (!editFormData) return;
     setIsSubmitting(true);
     
-    const result = await updateRegistrationAction(originalEmail, editFormData as SignUpData);
+    // Manually construct the whatsappNumber before sending for validation
+    const dataToUpdate = {
+      ...editFormData,
+      whatsappNumber: `${editFormData.countryCode}${editFormData.phoneNumber}`
+    }
+
+    const result = await updateRegistrationAction(originalEmail, dataToUpdate as SignUpData);
     setIsSubmitting(false);
 
     if (result.success) {

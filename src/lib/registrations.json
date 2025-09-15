@@ -1,6 +1,6 @@
 [
   {
-    "name": "ha",
+    "name": "shi",
     "email": "shi@raz.com",
     "gender": "Male",
     "age": 22,
@@ -8,7 +8,7 @@
     "countryCode": "+1",
     "phoneNumber": "1080906050",
     "whatsappNumber": "+11080906050",
-    "sport": "Track Running",
+    "sport": "Table Tennis",
     "participationType": "Individual",
     "teamName": ""
   }
