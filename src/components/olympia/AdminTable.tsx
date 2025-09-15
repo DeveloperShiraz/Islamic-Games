@@ -44,6 +44,20 @@ interface AdminTableProps {
   data: SignUpData[];
 }
 
+// Helper to split whatsappNumber into country code and phone number
+const splitWhatsAppNumber = (whatsappNumber?: string) => {
+  if (!whatsappNumber) {
+    return { countryCode: '+1', phoneNumber: '' };
+  }
+  // Simple logic: assumes country code is `+` followed by 1 to 3 digits.
+  const match = whatsappNumber.match(/^(\+\d{1,3})(.*)/);
+  if (match) {
+    return { countryCode: match[1], phoneNumber: match[2] };
+  }
+  // Fallback if no country code is found
+  return { countryCode: '+1', phoneNumber: whatsappNumber };
+};
+
 export function AdminTable({ data }: AdminTableProps) {
   const { toast } = useToast();
   const router = useRouter();
@@ -61,7 +75,13 @@ export function AdminTable({ data }: AdminTableProps) {
 
   const handleEditClick = (reg: SignUpData) => {
     setEditingEmail(reg.email);
-    setEditFormData({ ...reg, age: Number(reg.age) });
+    const { countryCode, phoneNumber } = splitWhatsAppNumber(reg.whatsappNumber);
+    setEditFormData({
+      ...reg,
+      age: Number(reg.age),
+      countryCode,
+      phoneNumber,
+    });
   };
 
   const handleCancelClick = () => {
@@ -95,6 +115,7 @@ export function AdminTable({ data }: AdminTableProps) {
     setIsSubmitting(false);
     if (result.success) {
       toast({ title: 'Success', description: 'Registration deleted.' });
+      router.refresh();
     } else {
       toast({
         variant: 'destructive',
@@ -198,9 +219,26 @@ export function AdminTable({ data }: AdminTableProps) {
                   {isEditing ? renderEditableCell('age', 'number') : reg.age}
                 </TableCell>
                 <TableCell>
-                  {isEditing
-                    ? renderEditableCell('whatsappNumber', 'tel')
-                    : reg.whatsappNumber}
+                  {isEditing ? (
+                    <div className="flex gap-1">
+                      <Input
+                        type="text"
+                        name="countryCode"
+                        value={editFormData?.countryCode ?? ''}
+                        onChange={handleInputChange}
+                        className="h-8 w-1/4"
+                      />
+                      <Input
+                        type="tel"
+                        name="phoneNumber"
+                        value={editFormData?.phoneNumber ?? ''}
+                        onChange={handleInputChange}
+                        className="h-8 w-3/4"
+                      />
+                    </div>
+                  ) : (
+                    reg.whatsappNumber
+                  )}
                 </TableCell>
                 <TableCell>
                   {isEditing ? renderSelectCell('sport', sports) : reg.sport}
@@ -277,7 +315,11 @@ export function AdminTable({ data }: AdminTableProps) {
                               onClick={() => handleDelete(reg.email)}
                               className="bg-destructive hover:bg-destructive/90"
                             >
-                              Delete
+                              {isSubmitting ? (
+                                <Loader2 className="animate-spin" />
+                              ) : (
+                                'Delete'
+                              )}
                             </AlertDialogAction>
                           </AlertDialogFooter>
                         </AlertDialogContent>

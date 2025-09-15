@@ -50,7 +50,8 @@ export function SignUpForm() {
       email: '',
       parentEmail: '',
       age: undefined,
-      whatsappNumber: '',
+      countryCode: '+1',
+      phoneNumber: '',
       teamName: '',
       participationType: 'Individual',
     },
@@ -88,7 +89,8 @@ export function SignUpForm() {
           Islamic Games Houston 2025
         </CardTitle>
         <CardDescription>
-          Register for the Muslim Olympics. Please fill out the form to register.
+          Register for the Muslim Olympics. Please fill out the form to
+          register.
         </CardDescription>
       </CardHeader>
       <Form {...form}>
@@ -166,7 +168,13 @@ export function SignUpForm() {
                       placeholder="Enter your age"
                       {...field}
                       value={field.value ?? ''}
-                      onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                      onChange={(e) =>
+                        field.onChange(
+                          e.target.value === ''
+                            ? undefined
+                            : e.target.valueAsNumber
+                        )
+                      }
                     />
                   </FormControl>
                   <FormMessage />
@@ -195,23 +203,39 @@ export function SignUpForm() {
                 )}
               />
             )}
-            <FormField
-              control={form.control}
-              name="whatsappNumber"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>WhatsApp Number</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="tel"
-                      placeholder="+1 (555) 555-5555"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className="md:col-span-2">
+              <FormLabel>WhatsApp Number</FormLabel>
+              <div className="flex gap-2 mt-2">
+                <FormField
+                  control={form.control}
+                  name="countryCode"
+                  render={({ field }) => (
+                    <FormItem className="w-1/4">
+                      <FormControl>
+                        <Input placeholder="+1" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="phoneNumber"
+                  render={({ field }) => (
+                    <FormItem className="w-3/4">
+                      <FormControl>
+                        <Input
+                          type="tel"
+                          placeholder="(555) 555-5555"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
             <FormField
               control={form.control}
               name="sport"

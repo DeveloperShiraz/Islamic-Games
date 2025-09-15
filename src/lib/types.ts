@@ -27,19 +27,28 @@ export const SignUpSchema = z
       .min(5, { message: 'You must be at least 5 years old.' })
       .max(100, { message: 'Please enter a valid age.' }),
     parentEmail: z.string().email().optional().or(z.literal('')),
-    whatsappNumber: z
+    countryCode: z.string().min(1, 'Country code is required.'),
+    phoneNumber: z
       .string()
-      .min(10, { message: 'Please enter a valid WhatsApp number.' }),
+      .min(10, { message: 'Please enter a valid phone number.' }),
+    whatsappNumber: z.string().optional(),
     sport: z.enum(sports, { required_error: 'Please select a sport.' }),
     participationType: z.enum(['Individual', 'Team'], {
       required_error: 'Please select a participation type.',
     }),
     teamName: z.string().optional(),
   })
+  .transform((data) => ({
+    ...data,
+    whatsappNumber: `${data.countryCode}${data.phoneNumber}`,
+  }))
   .refine(
     (data) => {
       if (data.age < 18) {
-        return !!data.parentEmail && z.string().email().safeParse(data.parentEmail).success;
+        return (
+          !!data.parentEmail &&
+          z.string().email().safeParse(data.parentEmail).success
+        );
       }
       return true;
     },
