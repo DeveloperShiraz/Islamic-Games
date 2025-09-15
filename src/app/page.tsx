@@ -20,7 +20,7 @@ export default function Home() {
               <div className="flex items-center gap-4">
                 <Calendar className="h-6 w-6 text-accent" />
                 <p>
-                  <span className="font-bold">Dates:</span> September 27-28,
+                  <span className="font-bold">Dates:</span> September 27 Saturday - 28 Sunday,
                   2025
                 </p>
               </div>
