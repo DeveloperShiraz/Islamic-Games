@@ -33,7 +33,7 @@ export default function Home() {
               <div className="flex items-start gap-4">
                 <MapPin className="h-6 w-6 text-accent mt-1" />
                 <div>
-                  <p className="font-bold">Location:</p>
+                  <p className="font-bold">Location: (Click the address below to open in Google Maps).</p>
                   <a
                     href="https://maps.app.goo.gl/EGQ2iX7CZDbWZ7CW8"
                     target="_blank"

@@ -69,11 +69,11 @@ export async function updateRegistrationAction(
   const result = SignUpSchema.safeParse(data);
 
   if (!result.success) {
-    const parentEmailError = result.error.flatten().fieldErrors.parentEmail;
-     if (parentEmailError) {
-      return { success: false, errors: { _form: parentEmailError } };
+    const { parentEmail, ...fieldErrors } = result.error.flatten().fieldErrors;
+    if (parentEmail) {
+      return { success: false, errors: { _form: parentEmail } };
     }
-    return { success: false, errors: result.error.flatten().fieldErrors };
+    return { success: false, errors: fieldErrors };
   }
 
   try {
